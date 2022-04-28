@@ -6,7 +6,7 @@ const NotFound = () => {
   return (
     <Alert severity="error">
       <AlertTitle>Page Not Found - 404 </AlertTitle>
-      Go to
+      Go to{" "}
       <strong>
         <Link to="/products">Products</Link>
       </strong>
