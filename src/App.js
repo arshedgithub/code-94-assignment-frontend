@@ -6,6 +6,7 @@ import UserAppBar from "./components/UserAppBar";
 // pages
 import Products from "./pages/Products";
 import NewProduct from "./pages/NewProduct";
+import EditProduct from "./pages/EditProduct";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/products" element={<Products />} />
           <Route path="/new-product" element={<NewProduct />} />
-          {/* <Route path="/edit-product" element={<EditProduct />} /> */}
+          <Route path="/edit-product" element={<EditProduct />} />
           <Route path="/not-found" element={<NotFound />} />
           <Route path="/" element={<Navigate replace to="/products" />} />
           <Route path="*" element={<Navigate replace to="/not-found" />} />
