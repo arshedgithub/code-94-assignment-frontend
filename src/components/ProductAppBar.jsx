@@ -1,10 +1,20 @@
 import React from "react";
 // material UI component
-import { Button, Toolbar, Typography } from "@mui/material";
+import { Button, createTheme, Toolbar, Typography } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+
+// customizing the theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#001EB9", // given dark blue color
+    },
+  },
+});
 
 const ProductAppBar = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Typography
         variant="h5"
         component="div"
@@ -19,7 +29,7 @@ const ProductAppBar = () => {
         </Button>
         <Button variant="outlined" size="large" color="primary"></Button>
       </Toolbar>
-    </div>
+    </ThemeProvider>
   );
 };
 
