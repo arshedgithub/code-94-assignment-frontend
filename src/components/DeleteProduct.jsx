@@ -12,6 +12,16 @@ import {
 // svg icon
 import DeleteIcon from "../assets/svg/delete-icon.svg";
 import AlertIcon from "../assets/svg/alert.svg";
+import { ThemeProvider } from "@emotion/react";
+
+// customizing the theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#001EB9", // given dark blue color
+    },
+  },
+});
 
 export default function DeleteProduct({ id }) {
   const [open, setOpen] = useState(false);
@@ -39,7 +49,7 @@ export default function DeleteProduct({ id }) {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Button variant="text" onClick={handleClickOpen}>
         <img src={DeleteIcon} alt="delete" />
       </Button>
@@ -66,6 +76,6 @@ export default function DeleteProduct({ id }) {
           </Button>
         </DialogActions>
       </Dialog>
-    </>
+    </ThemeProvider>
   );
 }
