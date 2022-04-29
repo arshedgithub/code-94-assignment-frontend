@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import ProductAppBAr from "../components/ProductAppBar";
 // material UI components
@@ -9,12 +10,13 @@ import {
   TableCell,
   TableContainer,
   TableRow,
+  Button,
 } from "@mui/material";
-
-import DeleteIcon from "../assets/svg/delete-icon.svg";
+// svg icons
 import EditIcon from "../assets/svg/edit-icon.svg";
 import StarIcon from "../assets/svg/star.svg";
 import StarredIcon from "../assets/svg/starred.svg";
+import DeleteProduct from "../components/DeleteProduct";
 
 const Products = () => {
   const [productList, setProductList] = useState([]);
@@ -53,25 +55,25 @@ const Products = () => {
                   key={_id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  {/* <TableCell component="th" scope="row">
-                    {name}
-                  </TableCell> */}
                   <TableCell align="left">{sku}</TableCell>
                   <TableCell align="left">{image}</TableCell>
                   <TableCell align="left">{name}</TableCell>
                   <TableCell align="left">${quality}.00</TableCell>
                   <TableCell align="right">
-                    <img src={DeleteIcon} alt="delete" />
-                    <img src={EditIcon} alt="delete" />
-                    <button
-                      onClick={() => setLiked(!liked)}
-                      style={{
-                        backgroundColor: "transparent",
-                        border: "none",
-                      }}
-                    >
+                    {/* delete component */}
+                    <DeleteProduct id={_id} />
+
+                    {/* navigate to edit product */}
+                    <Link to="/edit-product">
+                      <Button variant="text" sx={{ m: 0, p: 0 }}>
+                        <img src={EditIcon} alt="delete" />
+                      </Button>
+                    </Link>
+
+                    {/* make product favourite */}
+                    <Button variant="text" onClick={() => setLiked(!liked)}>
                       <img src={liked ? StarredIcon : StarIcon} alt="delete" />
-                    </button>
+                    </Button>
                   </TableCell>
                 </TableRow>
               );
