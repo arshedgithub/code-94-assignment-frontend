@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ThemeProvider } from "@emotion/react";
 import axios from "axios";
 // material UI components
 import {
@@ -13,7 +14,6 @@ import {
 // svg icon
 import DeleteIcon from "../assets/svg/delete-icon.svg";
 import AlertIcon from "../assets/svg/alert.svg";
-import { ThemeProvider } from "@emotion/react";
 
 // customizing the theme
 const theme = createTheme({
@@ -24,7 +24,7 @@ const theme = createTheme({
   },
 });
 
-export default function DeleteProduct({ id }) {
+export default function DeleteProduct({ productId }) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -41,7 +41,7 @@ export default function DeleteProduct({ id }) {
     handleClose();
     try {
       const res = await axios.delete(
-        `http://localhost:4000/api/products/${id}`
+        `http://localhost:4000/api/products/${productId}`
       );
       console.log(res.status);
     } catch (err) {
@@ -72,7 +72,11 @@ export default function DeleteProduct({ id }) {
           <Button variant="outlined" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="contained" onClick={handleDelete} autoFocus>
+          <Button
+            variant="contained"
+            onClick={() => handleDelete(productId)}
+            autoFocus
+          >
             Delete
           </Button>
         </DialogActions>

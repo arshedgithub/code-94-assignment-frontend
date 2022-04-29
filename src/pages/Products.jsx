@@ -61,7 +61,7 @@ const Products = () => {
                   <TableCell align="left">${quality}.00</TableCell>
                   <TableCell align="right">
                     {/* delete component */}
-                    <DeleteProduct id={_id} />
+                    <DeleteProduct productId={_id} />
 
                     {/* navigate to edit product */}
                     <Link to="/edit-product">
